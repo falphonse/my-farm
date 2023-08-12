@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - My Cottage Rental</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      color: black;
+    }
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+  <!-- Include Leaflet.js library -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>For inquiries and bookings, please use the contact information below:</p>
+    <div class="contact-info">
+      <p>Email: amy.alphonse@gmail.com</p>
+      <p>Phone: 905-867-6114</p>
+      <p>Address: 567,Reid St, Kinmount, Canada</p>
+    </div>
+    <div id="map"></div>
+  </section>
+
+  <footer>
+  <div class="social-media">
+    <a id="facebook-icon" href="https://m.facebook.com/irondaletours?wtsid=rdr_01LfLMVMeP4JmuMFM">
+      <img src="Image/facebook.png" alt="Facebook">
+    </a>
+  </div>
+  <p>&copy; 2023 My Cottage Rental. All rights reserved.</p>
+</footer>
+
+  <script>
+    // Initialize Leaflet map
+    function initMap() {
+      var cottageLocation = [44.779370, -78.609900]; 
+      var map = L.map('map').setView(cottageLocation, 12);
+
+      // Add the map tile layer
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      // Add a marker to the map
+      L.marker(cottageLocation).addTo(map).bindPopup('My Cottage');
+    }
+  </script>
+  <script>
+    // Call the initMap function once the document has loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      initMap();
+    });
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const facebookIcon = document.getElementById('facebook-icon');
+    facebookIcon.addEventListener('click', function(event) {
+      event.preventDefault(); 
+      window.open('https://m.facebook.com/irondaletours?wtsid=rdr_01LfLMVMeP4JmuMFM', '_blank');
+    });
+  });
+</script>
+</body>
+</html>
